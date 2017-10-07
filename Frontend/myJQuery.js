@@ -9,5 +9,10 @@ $(document).ready(function(){
         $('.inputfield').fadeIn(1000).removeClass('hidden');
     }, 1000);
     
+      setTimeout(function(){
+        $('.welcome-text').fadeIn(1000).removeClass('hidden');
+    }, 1000);
+    
 });
+
 
