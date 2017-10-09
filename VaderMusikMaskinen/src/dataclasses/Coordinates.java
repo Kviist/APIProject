@@ -1,6 +1,6 @@
 package dataclasses;
 
 public class Coordinates {
-	public double lat;
-	public double lng;
+	public String lat;
+	public String lng;
 }
