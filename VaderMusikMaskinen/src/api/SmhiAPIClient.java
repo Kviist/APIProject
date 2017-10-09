@@ -18,9 +18,9 @@ public class SmhiAPIClient {
         WebResource resource = client.resource(URL + "/lon/" + lon + "/lat/" + lat + "/data.json");
         JsonObject response = jsonArrayBuilder(resource.get(String.class));
         createSmhiDataclass(response);
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        String prettyJson = gson.toJson(response);
-//        System.out.println(prettyJson + "\n");
+/*        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = gson.toJson(response);
+        System.out.println(prettyJson + "\n");*/
     }
 
     public JsonObject jsonArrayBuilder(String jsonString){
@@ -34,10 +34,22 @@ public class SmhiAPIClient {
 
     private void createSmhiDataclass(JsonObject jsonObj){
                 //Kod för att leta sig ner till JSON-objekten lat och lng.
+
         JsonArray jsonArray = jsonObj.getAsJsonArray("timeSeries");
         jsonObj = jsonArray.get(0).getAsJsonObject();
         jsonArray = jsonObj.getAsJsonArray("parameters");
-        System.out.println(jsonObj);
+        for(int i = 0; i < jsonArray.size(); i++) {
+            jsonObj = jsonArray.get(i).getAsJsonObject();
+            String name = jsonObj.get("name").getAsString();
+            if(name.equals("pcat")) {
+                String values = jsonObj.get("values").getAsString();
+                String[] weatherData = {name, values};
+                
+
+            }
+        }
+
+
 //        jsonObj = jsonObj.get("geometry").getAsJsonObject();
 //        jsonObj = jsonObj.get("location").getAsJsonObject();
 //        String lat = jsonObj.get("lat").getAsString();

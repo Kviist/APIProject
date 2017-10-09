@@ -2,14 +2,14 @@ package dataclass;
 
 public class SmhiData {
 
-    private String t;
-    private String ws;
-    private String tstm;
-    private String pcat;
+    private WeatherData t;
+    private WeatherData ws;
+    private WeatherData tstm;
+    private WeatherData pcat;
 
 
 
-    public SmhiData(String t, String ws, String tstm, String pcat){
+    private SmhiData(WeatherData t, WeatherData ws, WeatherData tstm, WeatherData pcat){
         this.t=t;
         this.ws=ws;
         this.tstm=tstm;
@@ -18,5 +18,18 @@ public class SmhiData {
 
     public String toString(){
         return "C: " + t + "\n" + "WS: " + ws + "\n" + "TP: " + tstm + "\n" + "DP: " + pcat;
+    }
+
+    private class WeatherData{
+
+        private String name;
+        private String values;
+
+        public WeatherData(String[] weatherData){
+            name = weatherData[0];
+            values = weatherData[1];
+
+        }
+
     }
 }
