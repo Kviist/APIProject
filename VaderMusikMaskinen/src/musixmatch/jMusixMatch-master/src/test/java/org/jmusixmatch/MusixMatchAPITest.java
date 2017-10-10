@@ -33,77 +33,64 @@ public class MusixMatchAPITest {
         return 0;
     }
     
-    public void findSongWithTrackID(int trackID) {
+    public String getSongWithTrackID(int trackID) {
     	try {
 			Track track = musixMatch.getTrack(trackID);
 			TrackData data = track.getTrack();
 			
-			System.out.println("Track Name: " + data.getTrackName());
-			System.out.println("Artist Name: " + data.getArtistName());
-	        System.out.println("Album Name: " + data.getAlbumName());
+			return data.getTrackName();
 		} catch (MusixMatchException e) {
 			e.printStackTrace();
 		}
+    	return null;
     }
     
-    public void getLyricsWithTrackID(int trackID) {
+    public String getArtistWithTrackID(int trackID) {
     	try {
-    		Lyrics lyrics = musixMatch.getLyrics(trackID);
-    		
-    	    System.out.println("\n" + lyrics.getLyricsBody());
+			Track track = musixMatch.getTrack(trackID);
+			TrackData data = track.getTrack();
+			
+			return data.getArtistName();
 		} catch (MusixMatchException e) {
 			e.printStackTrace();
 		}
+    	return null;
     }
-	
-//    public void testAPI() throws MusixMatchException {
-//
-//        // Track Search [ Fuzzy ]
-//        Track track = musixMatch.getMatchingTrack(trackName, artistName);
-//        TrackData data = track.getTrack();
-//
-//        System.out.println("AlbumID : " + data.getAlbumId());
-//        System.out.println("Album Name : " + data.getAlbumName());
-//        System.out.println("Artist ID : " + data.getArtistId());
-//        System.out.println("Album Name : " + data.getArtistName());
-//        System.out.println("Track ID : " + data.getTrackId());
-//       
-//        int trackID = data.getTrackId();
-//
-//        Lyrics lyrics = musixMatch.getLyrics(trackID);
-//
-//        System.out.println("Lyrics ID       : " + lyrics.getLyricsId());
-//        System.out.println("Lyrics Language : " + lyrics.getLyricsLang());
-//        System.out.println("Lyrics Body     : " + lyrics.getLyricsBody());
-//        System.out.println("Script-Tracking-URL : " + lyrics.getScriptTrackingURL());
-//        System.out.println("Pixel-Tracking-URL : " + lyrics.getPixelTrackingURL());
-//        System.out.println("Lyrics Copyright : " + lyrics.getLyricsCopyright());
-//
-//        // The following will search for tracks with matching artist_name 'Eminem'
-//        List<Track> tracks = musixMatch.searchTracks("", "E-type", "", 10, 10, true);
-//
-//       for (Track trk : tracks) {
-//           TrackData trkData = trk.getTrack();
-//
-//            System.out.println("AlbumID : " + trkData.getAlbumId());
-//            System.out.println("Album Name : " + trkData.getAlbumName());
-//            System.out.println("Artist ID : " + trkData.getArtistId());
-//            System.out.println("Artist Name : " + trkData.getArtistName());
-//            System.out.println("Track ID : " + trkData.getTrackId());
-//            System.out.println();
-//        }
-//
-//    }
+    
+    public String getAlbumWithTrackID(int trackID) {
+    	try {
+			Track track = musixMatch.getTrack(trackID);
+			TrackData data = track.getTrack();
+
+	        return data.getAlbumName();
+		} catch (MusixMatchException e) {
+			e.printStackTrace();
+		}
+    	return null;
+    }
+    
+    public String getLyricsWithTrackID(int trackID) {
+    	try {
+    		Lyrics lyrics = musixMatch.getLyrics(trackID);
+    	    String temp = ("\n" + lyrics.getLyricsBody());
+    	    
+    	    return temp;
+		} catch (MusixMatchException e) {
+			e.printStackTrace();
+		}
+    	return null;
+    }
     
     public static void main(String[] args) {
     	int trackID;
     	String artistName, trackName;
-    	
     	MusixMatchAPITest api = new MusixMatchAPITest();
     	trackName = JOptionPane.showInputDialog("Skriv in låtnamn: ");
     	artistName = JOptionPane.showInputDialog("Skriv in artistnamn: ");
     	trackID = api.searchForSongReturnTrackID(trackName, artistName);
-    	api.findSongWithTrackID(trackID);
-    	api.getLyricsWithTrackID(trackID);
+    	System.out.println(api.getSongWithTrackID(trackID));
+    	System.out.println(api.getArtistWithTrackID(trackID));
+    	System.out.println(api.getAlbumWithTrackID(trackID));
+    	System.out.println(api.getLyricsWithTrackID(trackID));
     }
 }
