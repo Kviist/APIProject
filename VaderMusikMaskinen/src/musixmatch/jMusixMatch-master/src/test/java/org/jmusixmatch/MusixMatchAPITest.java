@@ -6,6 +6,11 @@ import org.jmusixmatch.entity.track.TrackData;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.google.gson.Gson;
+
+import static spark.Spark.get;
+import static spark.SparkBase.port;
+
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -73,8 +78,30 @@ public class MusixMatchAPITest {
     	try {
     		Lyrics lyrics = musixMatch.getLyrics(trackID);
     	    String temp = ("\n" + lyrics.getLyricsBody());
-    	    
+
     	    return temp;
+		} catch (MusixMatchException e) {
+			e.printStackTrace();
+		}
+    	return null;
+    }
+    
+    public String toString(int trackID) { 	
+    	 
+    	
+    	try {
+			Track track = musixMatch.getTrack(trackID);
+			TrackData data = track.getTrack();
+			Lyrics lyrics = musixMatch.getLyrics(trackID);
+			String temp = (data.getTrackName());
+			temp += ("<br>" + data.getArtistName());
+			temp += ("<br>" + data.getAlbumName() + "<p>");
+			String[] split = lyrics.getLyricsBody().split("\n");
+			for(int i=0; i<split.length; i++) {
+				temp += (split[i] + "<br>");
+			}
+			
+    	    return temp; 
 		} catch (MusixMatchException e) {
 			e.printStackTrace();
 		}
@@ -92,5 +119,14 @@ public class MusixMatchAPITest {
     	System.out.println(api.getArtistWithTrackID(trackID));
     	System.out.println(api.getAlbumWithTrackID(trackID));
     	System.out.println(api.getLyricsWithTrackID(trackID));
+    	
+    	Gson gson = new Gson();
+
+		port(5000);
+		
+		get("/ok", (request, response) -> {
+			System.out.println(request.headers("Accept: application/json"));
+			return api.toString(trackID);
+		}); 	
     }
 }
