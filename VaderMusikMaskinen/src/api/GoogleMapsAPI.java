@@ -14,7 +14,8 @@ public class GoogleMapsAPI {
 		
 	}
 	
-	public static Coordinates requestCoordinates(String city) throws Exception {
+	public static Coordinates requestCoordinates(String city) {
+		try {
 		URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address="+ city +"&key=AIzaSyDrA1RHHqNSi7BVZZofVtWDXrBGVSgpGn0");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -48,6 +49,10 @@ public class GoogleMapsAPI {
         String lon = jsonObj.get("lng").getAsString();
         
         return new Coordinates(lat, lon);
+		} catch (Exception e) {
+			System.out.println("Invalid input to GoogleMaps: returned Malmö coordinates");
+			return new Coordinates("55", "13");
+		}
 	}
 	
 	public static void main(String[] args) throws Exception {

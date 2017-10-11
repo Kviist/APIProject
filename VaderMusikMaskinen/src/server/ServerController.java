@@ -1,5 +1,16 @@
 package server;
 
-public class ServerController {
+import api.*;
+import dataclasses.*;
 
+public class ServerController {
+	
+	public ServerController(String city) {
+		Coordinates coordinates = GoogleMapsAPI.requestCoordinates(city);
+		SmhiAPIClient smhi = new SmhiAPIClient(coordinates.getLon(), coordinates.getLat());
+	}
+	
+	public static void main(String[] args) {
+		ServerController controller = new ServerController("");
+	}
 }
