@@ -1,4 +1,4 @@
-package dataclass;
+package dataclasses;
 
 public class SmhiData {
 
