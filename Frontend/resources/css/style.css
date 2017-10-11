@@ -1,0 +1,144 @@
+*{
+    margin : 0;
+}
+/*----------------------*/
+/* Reusable components*/
+/*----------------------*/
+.row{
+    max-width: 1140px;
+    margin: 0 auto; 
+}
+
+/*----------------------*/
+/* BIG components*/
+/*----------------------*/
+html{
+    background-color: white;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+header{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(images/consert.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+    transition: background-image 0.2s;
+}
+
+/*----------------------*/
+/* TOP_RIGHT NAVIGATION*/
+/*----------------------*/
+
+.main-nav{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    float: right;
+    list-style: none;
+    margin-top: 55px; 
+
+}
+
+.main-nav li{
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited{
+    padding: 8px 0;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+.main-nav li a:hover,
+.main-nav li a:active{
+    border-bottom: 2px solid #e67e22;
+}
+
+.hidden{
+     display: none;
+}
+
+input[type=text]{
+    width: 50%;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: border-bottom 0.2s;
+    font-size: 24px;
+}
+input[type=text]:hover,
+input[type=text]:focus{
+   border: 2px solid #e67e22;
+    transition: border-bottom 0.2s;
+    outline: 0;
+}
+
+input[type=text] placeholder{
+  font-size: 24px;
+}
+
+h1,h2,p{
+    color: white;
+    font-family: Helvetica;
+}
+
+h1{
+    font-size: 300%;
+    
+}
+h2{
+    font-size: 200%;
+    letter-spacing: 4px;
+    border-bottom: 2px solid #e67e22;
+}
+p{
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-size: 115%;
+    font-family: FUTURA;
+}
+
+.welcome-text{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    text-align: center;
+    width: 60%;
+}
+.works-headline{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+
+}
+
+.description{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 50%;
+}
+
+.songs{
+    color: white;
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+
+
+
