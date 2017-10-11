@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package api;
+=======
+﻿package main.java.api;
+>>>>>>> origin/master
 
 import org.jmusixmatch.*;
 import org.jmusixmatch.entity.lyrics.Lyrics;

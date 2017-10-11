@@ -1,4 +1,4 @@
-package api;
+package main.java.api;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;

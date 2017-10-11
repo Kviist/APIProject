@@ -1,4 +1,4 @@
-package dataclasses;
+package main.java.dataclasses;
 
 public class Coordinates {
 	private String lat;
