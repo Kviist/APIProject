@@ -64,15 +64,21 @@ header{
     border-bottom: 2px solid #e67e22;
 }
 
+/*----------------------*/
+/* Class to set something hidden */
+/*----------------------*/
 .hidden{
      display: none;
 }
 
+/*----------------------*/
+/* INPUT FIELD */
+/*----------------------*/
 input[type=text]{
     width: 50%;
     height: 50px;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 25%;
     border-radius: 10px;
     border: 2px solid transparent;
@@ -90,6 +96,9 @@ input[type=text] placeholder{
   font-size: 24px;
 }
 
+/*----------------------*/
+/* HEADERS AND PARAGRAPHS*/
+/*----------------------*/
 h1,h2,p{
     color: white;
     font-family: Helvetica;
@@ -138,7 +147,16 @@ p{
     list-style: none;
     padding: 0;
 }
+.about-us-des{
+    font-size: 95%;
+}
 
+.about-us-des i{
+    color: #e67e22;
+}
+/*----------------------*/
+/* IMAGES*/
+/*----------------------*/
 .images-of-us{
     position: relative;
     top: 55%;
@@ -151,9 +169,7 @@ p{
    
 }
 
-.about-us-des{
-    font-size: 95%;
-}
+
 
 
 

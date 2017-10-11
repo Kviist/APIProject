@@ -1,4 +1,4 @@
-﻿package api;
+package api;
 
 import org.jmusixmatch.*;
 import org.jmusixmatch.entity.lyrics.Lyrics;
