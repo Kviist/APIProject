@@ -1,7 +1,7 @@
-package server;
+package main.java.server;
 
-import api.*;
-import dataclasses.*;
+import main.java.api.*;
+import main.java.dataclasses.*;
 
 public class ServerController {
 	

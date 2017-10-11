@@ -1,9 +1,9 @@
-package api;
+package main.java.api;
 
 import com.google.gson.*;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
-import dataclasses.SmhiData;
+import main.java.dataclasses.SmhiData;
 
 
 public class SmhiAPIClient {
