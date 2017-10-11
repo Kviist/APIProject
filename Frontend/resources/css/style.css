@@ -139,6 +139,18 @@ p{
     padding: 0;
 }
 
+.images-of-us{
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    width: 80%;
+}
+
+.images-of-us img{
+    width: 15%;
+   
+}
+
 
 
 
