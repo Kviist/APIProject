@@ -1,8 +1,19 @@
+# Eclipse
 .classpath
 .project
-.settings
-*~
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
 target/
-.idea/libraries/Maven__com_google_code_gson_gson_2_1.xml
-.idea/encodings.xml
-jMusixMatch.iml
+
+# Old shit
+bin/
