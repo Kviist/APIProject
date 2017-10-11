@@ -7,10 +7,14 @@ public class ServerController {
 	
 	public ServerController(String city) {
 		Coordinates coordinates = GoogleMapsAPIClient.requestCoordinates(city);
-		SmhiAPIClient smhi = new SmhiAPIClient(coordinates.getLon(), coordinates.getLat());
+		if(Double.parseDouble(coordinates.getLon()) > 2.25 && Double.parseDouble(coordinates.getLon()) < 25) {
+			if(Double.parseDouble(coordinates.getLat()) > 53 && Double.parseDouble(coordinates.getLat()) < 70); {
+				SmhiAPIClient smhi = new SmhiAPIClient(coordinates.getLon(), coordinates.getLat());
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
-		ServerController controller = new ServerController("");
+		ServerController controller = new ServerController("Malmö");
 	}
 }
