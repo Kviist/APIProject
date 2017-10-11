@@ -8,9 +8,9 @@ import com.google.gson.*;
 
 import dataclasses.Coordinates;
 
-public class GoogleMapsAPI {
+public class GoogleMapsAPIClient {
 	
-	public GoogleMapsAPI() {
+	public GoogleMapsAPIClient() {
 		
 	}
 	
@@ -58,6 +58,5 @@ public class GoogleMapsAPI {
 	public static void main(String[] args) throws Exception {
 		Coordinates coords = requestCoordinates("Malmö");
 		System.out.println(coords.getLat() + ", " + coords.getLon());
-        
     }
 }

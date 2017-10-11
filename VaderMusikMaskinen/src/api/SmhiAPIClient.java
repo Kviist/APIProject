@@ -3,7 +3,7 @@ package api;
 import com.google.gson.*;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
-import dataclass.SmhiData;
+import dataclasses.SmhiData;
 
 
 public class SmhiAPIClient {

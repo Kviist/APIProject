@@ -1,21 +1,15 @@
 ﻿package api;
 
+import org.jmusixmatch.*;
 import org.jmusixmatch.entity.lyrics.Lyrics;
 import org.jmusixmatch.entity.track.Track;
 import org.jmusixmatch.entity.track.TrackData;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import com.google.gson.Gson;
-
-import static spark.Spark.get;
-import static spark.SparkBase.port;
 
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class MusixMatchAPITest {
+public class MusixMatchAPIClient {
 
    
 	private String trackName;
@@ -111,7 +105,7 @@ public class MusixMatchAPITest {
     public static void main(String[] args) {
     	int trackID;
     	String artistName, trackName;
-    	MusixMatchAPITest api = new MusixMatchAPITest();
+    	MusixMatchAPIClient api = new MusixMatchAPIClient();
     	trackName = JOptionPane.showInputDialog("Skriv in låtnamn: ");
     	artistName = JOptionPane.showInputDialog("Skriv in artistnamn: ");
     	trackID = api.searchForSongReturnTrackID(trackName, artistName);
@@ -119,14 +113,5 @@ public class MusixMatchAPITest {
     	System.out.println(api.getArtistWithTrackID(trackID));
     	System.out.println(api.getAlbumWithTrackID(trackID));
     	System.out.println(api.getLyricsWithTrackID(trackID));
-    	
-    	Gson gson = new Gson();
-
-		port(5000);
-		
-		get("/ok", (request, response) -> {
-			System.out.println(request.headers("Accept: application/json"));
-			return api.toString(trackID);
-		}); 	
     }
 }
