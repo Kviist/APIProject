@@ -129,7 +129,7 @@ p{
     position: absolute;
     top: 20%;
     left: 10%;
-    width: 50%;
+    width: 70%;
 }
 
 .songs{
@@ -140,15 +140,19 @@ p{
 }
 
 .images-of-us{
-    position: absolute;
-    top: 40%;
-    left: 10%;
-    width: 80%;
+    position: relative;
+    top: 55%;
+    left: 40%;
+    width: 90%;
 }
 
 .images-of-us img{
     width: 15%;
    
+}
+
+.about-us-des{
+    font-size: 95%;
 }
 
 
