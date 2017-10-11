@@ -1,11 +1,12 @@
-package main.java.api;
+package api;
+
 
 import java.io.*;
 import java.net.*;
 
 import com.google.gson.*;
 
-import main.java.dataclasses.Coordinates;
+import dataclasses.Coordinates;
 
 public class GoogleMapsAPIClient {
 	
