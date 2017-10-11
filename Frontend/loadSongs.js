@@ -1,8 +1,8 @@
 function getAPlaylist(user, playListId){
     $.ajax({
             method: "GET",
-            url:"https://api.spotify.com/v1/users/"+user+"/playlists/" + playListId, 
-            headers: {"Accept": "application/json", "Authorization": "Bearer BQBQtlWisFDuTatUWrH_Lzrh8iiu78ZG4pG7U6IEbNBKQFcvp63TPktABOw8mM9okpMvoIY6ag8uekAwOrTO7bckwoaKbV0oqabGSX7kGklWJACcEFjjSWUk__x9MiIoIeFl1OUBG63-aQBlAQ"}
+            url:"https://api.spotify.com/v1/users/"+    user+"/playlists/" + playListId, 
+            headers: {"Accept": "application/json", "Authorization": "Bearer BQCoOp4eIVj7a0jU8bstaDal4JYNZ1C-YbB9btHmatQ6M_oWGzG6ejerIHlgz9LPyGi5OUA3XSSddFwRoDqquc328X7rCk2uUR8clkft3rY07vhb_JrJECPJhfZyg8R3ZYQg14vv4Wn82MXzyw"}
     }).done(function(data){
         var trackObject = data['tracks'];
         var tracks = trackObject.items;
