@@ -6,13 +6,12 @@ function getAuth(){
     }).done(function(response){console.log(response)});
 }
 
-function fetchASong(songID){
-    getAuth();
-    $.ajax({
+function sendALocation(location){
+     $.ajax({
         method: "GET",
-        url: "https://api.spotify.com/v1/tracks/3B7udSGy2PfgoCniMSb523?access_token=BQBLyFaqMxhXrowWDMoYicCM6vSFz7-O8Sf4xtw0qDOFhnu6mQle7XGVFkRObRvNBKegi1nUnZNEFgkFQLdl9EVjdUIL1UF_CasP_PdPqJl0UKWuAnZ9ziDPYQWdi5_b3sQl3NuT_lm49V8lrg",
-        headers: {"Accept": "application/json"},
-     }).done(function(response){console.log(response);});
+        url: "http://127.0.0.1:7313/weatherdatasets/" + location,
+    }).done(function(response){console.log(response)});
+    
 }
 
 
@@ -33,9 +32,8 @@ $(document).ready(function(){
     }, 1000);
     
     $('.inputfield').keyup(function(event){
-    console.log("TEST");
     if(event.keyCode == 13){
-        window.location.href = 'ListPage.html';
+        sendALocation($('#search').val());
     }
 });
     
