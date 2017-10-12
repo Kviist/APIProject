@@ -9,10 +9,10 @@ import dataclasses.*;
  */
 
 public class ServerController {
-	private final String[] weatherTranslator =  {"klart","klart","havlmulet","havlmulet","molnigt","molnigt","dimma" +
-											"Regn","Regn","Kraftigt Regn","Åska","Snöblandat Regn","Snöblandat Regn","Slask" +
-											"Ganska Juligt", "Ganska Juligt","Ultra Juligt","Regn","Regn","Kraftigt Regn","Åska" +
-											"Snöblandat Regn","Snöblandat Regn","Slask","Ganska Juligt","Ultra Juligt"};
+	private final String[] weatherTranslator =  {"KLART","KLART","HALVMULET","HALVMULET","MOLNIGT","MOLNIGT","DIMMA" +
+											"REGN","REGN","KRAFTIGT REGN","ÅSKA","SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK" +
+											"GANSKA JULIGT", "GANSKA JULIGT","ULTRA JULIGT","REGN","REGN","KRAFTIGT REGN","ÅSKA" +
+											"SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK","GANSKA JULIGT","ULTRA JULIGT"};
 	
 	public ServerController() {
 
