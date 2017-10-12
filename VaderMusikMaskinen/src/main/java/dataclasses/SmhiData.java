@@ -1,43 +1,45 @@
 package dataclasses;
 
+/**
+ * @author Petter Månsson
+ * Dataclass for handeling forecast data from SMHI forecast API
+ */
+
 public class SmhiData {
 
-    private String t;
+    private String wsymb;
     private String ws;
-    private String tstm;
     private String pcat;
 
 
 
     public SmhiData(String[] weatherValues){
         this.pcat=weatherValues[0];
-        this.t=weatherValues[1];
-        this.ws=weatherValues[2];
-        this.tstm=weatherValues[3];
+        this.ws=weatherValues[1];
+        this.wsymb=weatherValues[2];
 
-//        System.out.println(this.toString());
     }
 
     public String toString(){
-        return "C: " + t + "\n" + "WS: " + ws + "\n" + "TP: " + tstm + "\n" + "DP: " + pcat;
+        return "WSymbol: " + wsymb + "\n" + "WS: " + ws + "\n" + "DP: " + pcat;
     }
 
     public String getWs() {
         return ws;
     }
 
-    public String getTstm() {
 
-        return tstm;
+    public String getWsymb() {
+
+        return wsymb;
     }
 
+    public Boolean getDrizzle() {
 
-    public String getT() {
-
-        return t;
-    }
-
-    public String getPcat() {
-        return pcat;
+        if(Integer.parseInt(pcat) == 4) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -5,6 +5,10 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import dataclasses.SmhiData;
 
+/**
+ * @author Petter Månsson 2017-10-10
+ * Class for calling SMHI API to extract forecast data from a specified location within the hour.
+ */
 
 public class SmhiAPIClient {
 
@@ -20,9 +24,6 @@ public class SmhiAPIClient {
         WebResource resource = client.resource(URL + "/lon/" + this.lon + "/lat/" + this.lat + "/data.json"); // Request to SMHI
         JsonObject response = jsonArrayBuilder(resource.get(String.class)); // Response from SHMI
         createSmhiDataclass(response);
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        String prettyJson = gson.toJson(response);
-//        System.out.println(prettyJson + "\n");
     }
 
 
@@ -44,9 +45,8 @@ public class SmhiAPIClient {
      * @param jsonObj
      */
     private void createSmhiDataclass(JsonObject jsonObj){
-                //Kod för att leta sig ner till JSON-objekten lat och lng.
-        String[] weatherValues = new String[4];
-        int k = 0;
+        String[] weatherValues = new String[3];
+        int k = 0;// Index counter for array
 
         JsonArray jsonArray = jsonObj.getAsJsonArray("timeSeries");
         jsonObj = jsonArray.get(0).getAsJsonObject();
@@ -62,17 +62,14 @@ public class SmhiAPIClient {
             }
         }
         smhidata = new SmhiData(weatherValues);
-//        System.out.println(smhidata.toString());
-
     }
 
     public SmhiData getSmhidata() {
         return this.smhidata;
     }
 
-
     private enum WeatherData {
-        T("t"),PCAT("pcat"),TSTM("tstm"),WS("ws");
+        WSYMB2("Wsymb2"),PCAT("pcat"),WS("ws");
 
         private final String text;
 
@@ -89,8 +86,6 @@ public class SmhiAPIClient {
     public static void main(String[] args){
         SmhiAPIClient client = new SmhiAPIClient("13", "54");
     }
-
-
 
 }
 

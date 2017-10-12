@@ -23,7 +23,7 @@ public class ServerMain {
 
 		get(weatherData, (request, response) -> {
 			String location = request.params(":location");
-			String res = controller.getWeather(location);
+			String res = controller.getWeatherTranslation(location);
 			System.out.println();
 
 
