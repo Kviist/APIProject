@@ -36,17 +36,17 @@ public class GoogleMapsAPIClient {
         JsonParser parser = new JsonParser();
         JsonObject jsonObj = parser.parse(jsonString).getAsJsonObject();
         
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String prettyJson = gson.toJson(jsonObj);
-        System.out.println(prettyJson + "\n");
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        String prettyJson = gson.toJson(jsonObj);
+//        System.out.println(prettyJson + "\n");
         
         //Kod för att leta sig ner till JSON-objekten lat och lng.
         JsonArray jsonArray = jsonObj.getAsJsonArray("results");
         jsonObj = jsonArray.get(0).getAsJsonObject(); 
         jsonObj = jsonObj.get("geometry").getAsJsonObject();
         jsonObj = jsonObj.get("location").getAsJsonObject();
-        String lat = jsonObj.get("lat").getAsString();
-        String lon = jsonObj.get("lng").getAsString();
+        String lat = jsonObj.get("lat").getAsString().substring(0,2);
+        String lon = jsonObj.get("lng").getAsString().substring(0,2);
         
         return new Coordinates(lat, lon);
 		} catch (Exception e) {

@@ -15,11 +15,29 @@ public class SmhiData {
         this.ws=weatherValues[2];
         this.tstm=weatherValues[3];
 
-        System.out.println(this.toString());
+//        System.out.println(this.toString());
     }
 
     public String toString(){
         return "C: " + t + "\n" + "WS: " + ws + "\n" + "TP: " + tstm + "\n" + "DP: " + pcat;
     }
 
+    public String getWs() {
+        return ws;
+    }
+
+    public String getTstm() {
+
+        return tstm;
+    }
+
+
+    public String getT() {
+
+        return t;
+    }
+
+    public String getPcat() {
+        return pcat;
+    }
 }

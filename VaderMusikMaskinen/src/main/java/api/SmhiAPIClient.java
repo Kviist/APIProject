@@ -11,12 +11,13 @@ public class SmhiAPIClient {
     static String URL = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point";
     private String lon;
     private String lat;
+    private SmhiData smhidata;
 
     public SmhiAPIClient(String lon, String lat){
         Client client = Client.create();
         this.lon=lon;
         this.lat=lat;
-        WebResource resource = client.resource(URL + "/lon/" + lon + "/lat/" + lat + "/data.json"); // Request to SMHI
+        WebResource resource = client.resource(URL + "/lon/" + this.lon + "/lat/" + this.lat + "/data.json"); // Request to SMHI
         JsonObject response = jsonArrayBuilder(resource.get(String.class)); // Response from SHMI
         createSmhiDataclass(response);
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -30,13 +31,12 @@ public class SmhiAPIClient {
      * @param jsonString
      * @return
      */
-    public JsonObject jsonArrayBuilder(String jsonString){
+    private JsonObject jsonArrayBuilder(String jsonString){
         JsonParser parser = new JsonParser();
         JsonObject jsonObj = parser.parse(jsonString).getAsJsonObject();
         return jsonObj;
 
     }
-
 
     /**
      * Method for extracting data from the response from SMHI and sending it to a class for containing said data.
@@ -61,10 +61,17 @@ public class SmhiAPIClient {
                 }
             }
         }
-        new SmhiData(weatherValues);
+        smhidata = new SmhiData(weatherValues);
+//        System.out.println(smhidata.toString());
+
     }
 
-    public enum WeatherData {
+    public SmhiData getSmhidata() {
+        return this.smhidata;
+    }
+
+
+    private enum WeatherData {
         T("t"),PCAT("pcat"),TSTM("tstm"),WS("ws");
 
         private final String text;
@@ -78,6 +85,7 @@ public class SmhiAPIClient {
             return text;
         }
     }
+
     public static void main(String[] args){
         SmhiAPIClient client = new SmhiAPIClient("13", "54");
     }
