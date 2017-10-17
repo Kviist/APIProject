@@ -9,13 +9,15 @@ import dataclasses.*;
  */
 
 public class ServerController {
+	
 	private final String[] weatherTranslator =  {"KLART","KLART","HALVMULET","HALVMULET","MOLNIGT","MOLNIGT","DIMMA" +
 											"REGN","REGN","KRAFTIGT REGN","ÅSKA","SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK" +
 											"GANSKA JULIGT", "GANSKA JULIGT","ULTRA JULIGT","REGN","REGN","KRAFTIGT REGN","ÅSKA" +
 											"SNÖBLANDAT REGN","SNÖBLANDAT REGN","SLASK","GANSKA JULIGT","ULTRA JULIGT"};
+	private MusixMatchAPIClient musixClient;
 	
 	public ServerController() {
-
+		musixClient = new MusixMatchAPIClient();
 	}
 
 	//Private method for translating weather symbol to a string
@@ -65,8 +67,9 @@ public class ServerController {
 		return res;
 	}
 
-	public String getLyrics(){
-		return "";
+	public String getLyricsWithSongNameAndAristName(String songName, String artistName){
+		int trackID = musixClient.searchForSongReturnTrackID(songName, artistName);
+		return musixClient.toString(trackID);
 	}
 
 
