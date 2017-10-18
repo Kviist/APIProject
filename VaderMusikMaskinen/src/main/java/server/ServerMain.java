@@ -21,6 +21,9 @@ import static spark.Spark.*;
 public class ServerMain {
 
 	final String weatherData = "/v1/weatherdatasets/:location";
+	final String playlistName ="/v1/musiclibrary/playlistName/:weather";
+	final String tracks ="/v1/musiclibrary/tracks/:weather";
+	final String lyrics ="/v1/musiclibrary/lyrics/:songArtistName";
 	private ServerController controller;
 	private Gson gson;
 
