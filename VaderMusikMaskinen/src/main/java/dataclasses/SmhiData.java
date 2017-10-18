@@ -1,5 +1,7 @@
 package dataclasses;
 
+import java.util.HashMap;
+
 /**
  * @author Petter Månsson
  * Dataclass for handeling forecast data from SMHI forecast API
@@ -13,10 +15,10 @@ public class SmhiData {
 
 
 
-    public SmhiData(String[] weatherValues){
-        this.pcat=weatherValues[0];
-        this.ws=weatherValues[1];
-        this.wsymb=weatherValues[2];
+    public SmhiData(HashMap weatherValues){
+        this.pcat=weatherValues.get("pcat").toString();
+        this.ws=weatherValues.get("ws").toString();
+        this.wsymb=weatherValues.get("Wsymb2").toString();
 
     }
 

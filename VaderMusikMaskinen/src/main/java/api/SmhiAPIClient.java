@@ -5,6 +5,8 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import dataclasses.SmhiData;
 
+import java.util.HashMap;
+
 /**
  * @author Petter Månsson 2017-10-10
  * Class for calling SMHI API to extract forecast data from a specified location within the hour.
@@ -45,7 +47,7 @@ public class SmhiAPIClient {
      * @param jsonObj
      */
     private void createSmhiDataclass(JsonObject jsonObj){
-        String[] weatherValues = new String[3];
+        HashMap<String,String> weatherValues = new HashMap<>();
         int k = 0;// Index counter for array
 
         JsonArray jsonArray = jsonObj.getAsJsonArray("timeSeries");
@@ -56,7 +58,7 @@ public class SmhiAPIClient {
             String name = jsonObj.get("name").getAsString();
             for(WeatherData w : WeatherData.values()) {
                 if (name.equals(w.toString())) {
-                    weatherValues[k]=(jsonObj.get("values").getAsString());
+                    weatherValues.put(w.toString(),jsonObj.get("values").getAsString());
                     k++;
                 }
             }

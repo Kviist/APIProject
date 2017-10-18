@@ -45,8 +45,8 @@ public class GoogleMapsAPIClient {
         jsonObj = jsonArray.get(0).getAsJsonObject(); 
         jsonObj = jsonObj.get("geometry").getAsJsonObject();
         jsonObj = jsonObj.get("location").getAsJsonObject();
-        String lat = jsonObj.get("lat").getAsString().substring(0,2);
-        String lon = jsonObj.get("lng").getAsString().substring(0,2);
+        String lat = jsonObj.get("lat").getAsString().substring(0,5);
+        String lon = jsonObj.get("lng").getAsString().substring(0,5);
         
         return new Coordinates(lat, lon);
 		} catch (Exception e) {
