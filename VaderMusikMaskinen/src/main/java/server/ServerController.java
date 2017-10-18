@@ -3,6 +3,7 @@ package server;
 import api.*;
 import com.wrapper.spotify.models.Playlist;
 import dataclasses.*;
+import org.jmusixmatch.MusixMatchException;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -77,8 +78,13 @@ public class ServerController {
 	}
 
 	public String getLyricsWithSongNameAndAristName(String songName, String artistName){
-		int trackID = musixClient.searchForSongReturnTrackID(songName, artistName);
-		return musixClient.toString(trackID);
+		try {
+			int trackID = musixClient.searchForSongReturnTrackID(songName, artistName);
+			return musixClient.toString(trackID);
+		} catch(Exception e){
+			return "Lyric is not avalible";
+		}
+
 	}
 
 	public Playlist getPlaylistName(String playListId){

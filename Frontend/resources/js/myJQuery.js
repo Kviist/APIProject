@@ -1,4 +1,5 @@
 var tracks;
+
 function sendALocation(location){
      $.ajax({
         method: "GET",
@@ -37,14 +38,37 @@ function getTracks(weather){
          }
         
          $('.songs li').click(function(e){
-             console.log($(this).text());
-             getLyrics($(this).text());
+             var currentSong = $(this).text();
+             console.log(currentSong);
+             getLyrics(currentSong);
+             
+             var splittedArray = currentSong.split('--');
+             var songName = splittedArray[0];
+             songName.trim();
+             var songId = null;
+             console.log(songName);
+             
+             for(var k = 0; k < tracks.length; k++){
+                 var res = tracks[k]['name'].trim().valueOf().localeCompare(songName.trim().valueOf());
+    
+                 if(res == 0){
+                     console.log("IM IN")
+                     songId = tracks[k]['id'];
+                 }
+             }
+             
+             console.log("SONGID: " + songId);
+             
+             if(songId != null){
+                 $('.player').attr('src','https://open.spotify.com/embed?uri=spotify:track:' + songId);
+             }
              
     });
      });
     
 }
 function getLyrics(songArtistName){
+    console.log(songArtistName);
    $.ajax({
     method: "GET",
     url: "http://127.0.0.1:7313/lyrics/" + songArtistName,

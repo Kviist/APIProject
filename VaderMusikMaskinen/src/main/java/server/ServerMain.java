@@ -79,6 +79,7 @@ public class ServerMain {
 			String songName = splited[0];
 			String artistName = splited[1];
 			String temp = (controller.getLyricsWithSongNameAndAristName(songName, artistName));
+			System.out.println(temp);
 			return temp;
 		});
 	}
