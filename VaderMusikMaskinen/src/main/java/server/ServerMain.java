@@ -20,10 +20,7 @@ import static spark.Spark.*;
 
 public class ServerMain {
 
-	final String weatherData = "/weatherdatasets/:location";
-	final String playlistName ="/playlistName/:weather";
-	final String tracks ="/tracks/:weather";
-	final String lyrics ="/lyrics/:songArtistName";
+	final String weatherData = "/v1/weatherdatasets/:location";
 	private ServerController controller;
 	private Gson gson;
 
@@ -40,14 +37,6 @@ public class ServerMain {
 		get(weatherData, (request, response) -> {
 			String location = request.params(":location");
 			String res = controller.getWeatherTranslation(location);
-			return res;
-		});
-
-		get(weatherData, (request, response) -> {
-			String location = request.params(":location");
-			String res = controller.getWeatherTranslation(location);
-			System.out.println();
-
 			return res;
 		});
 
