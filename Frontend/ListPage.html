@@ -4,13 +4,14 @@
         <title>Musik efter väder</title>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="loadSongs.js"></script>
+        <script src="resources/js/loadSongs.js"></script>
+        <link rel="stylesheet" type="text/css" href="resources/css/ionicons.min.css">
         
 
     </head>
     
     <body>
-        <header>
+        <header class="player-header">
             <nav>
                 <div class ="row">
                     <ul class= "main-nav">
@@ -22,13 +23,30 @@
                 </div>
             </nav>
             
-            <div class="list-of-songs hidden">
+            <div class="list-of-songs">
                 <h2 class="works-headline">Playlist</h2>
-                <ul class= "songs description">
-                </ul>
+                <div class = "weather-description row">
+                    <i class="ion-ios-partlysunny icon-small"></i>
+                    <p class="current-weather"></p>    
+                </div>
+                <div class="playlist-descriptiion row">
+                    <i class="ion-music-note icon-small"></i>
+                    <p class="current-playlist"></p>
+                 </div>
+                
+                <div class="scroll-list">
+                    <ul class= "songs">  
+                    </ul>
+                 </div>
+                
             </div>
-
-        </header>
+            <div>
+                <iframe class ="player" src="https://open.spotify.com/embed?uri=spotify:track:7FBiZyztaT8IWVcAwkkcWK" width="300" height="150" frameborder="0" allowtransparency="true"></iframe>
+            </div>
+            <div class="lyrics">
+                <p id="lyrics-text"></p>
+            </div>
+         </header>
         
     
     </body>

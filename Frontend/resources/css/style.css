@@ -21,13 +21,18 @@ html{
     text-rendering: optimizeLegibility;
 }
 
-header{
+.background{
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(images/consert.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
     background-attachment: fixed;
     transition: background-image 0.2s;
+}
+
+.player-header{
+    background: #1f1f1f;
+    height: 100vh;
 }
 
 /*----------------------*/
@@ -127,12 +132,6 @@ p{
     text-align: center;
     width: 60%;
 }
-.works-headline{
-    position: absolute;
-    top: 10%;
-    left: 10%;
-
-}
 
 .description{
     position: absolute;
@@ -168,6 +167,105 @@ p{
     width: 15%;
    
 }
+
+/*----------------------*/
+/* ICONS*/
+/*----------------------*/
+
+.list-of-songs{
+    position: absolute;
+    top: 10%;
+    width: 30%;
+    height: 40%;
+}
+.works-headline{
+    position: absolute;
+    left: 10%;
+
+}
+
+.weather-description{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-weight: 100;
+    font-size: 70%;
+    width: 50%;
+    display: inline-block;
+    
+}
+
+.current-weather{
+   display: inline-block;
+}
+
+.playlist-descriptiion{
+    position: absolute;
+    top:27%;
+    left: 10%;
+    font-weight: 100;
+    font-size: 70%;
+    width: 50%;
+    display: inline-block;
+    
+}
+
+.current-playlist{
+    display: inline-block;
+    top: 55%;
+    left: 10%;
+}
+
+
+.icon-small{
+    color: white;
+    font-size: 130%;
+    margin-right: 5px;
+}
+
+.scroll-list{
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    font-size: 70%;
+    font-weight: 100;
+    max-height: 400px;
+    width: 500px;
+    overflow: auto;
+}
+
+.scroll-list i{
+   color: #e67e22;
+}
+.songs li a{
+   text-decoration: none;
+    color: white;
+}
+
+.player{
+    position: absolute;
+    left: 40%;
+    top: 22%;
+}
+.lyrics{
+    position: absolute;
+    color: white;
+    left: 65%;
+    top: 22%;
+    max-height: 400px;
+    width: 35%;
+    font-size: 60%;
+    font-weight: 100;
+    overflow: auto;
+}
+
+.lyrics i{
+    color: #e67e22;
+}
+
+
+
+
 
 
 

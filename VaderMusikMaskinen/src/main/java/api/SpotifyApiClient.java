@@ -44,22 +44,30 @@ public class SpotifyApiClient{
         api = Api.builder().clientId(clientID).clientSecret(clientSecret).build();
     }
 
-    public void getPlaylist(String user, String playListId){
+    public Playlist getPlaylist(String user, String playListId){
 
+        getAuth();
         PlaylistRequest reqPlaylist = api.getPlaylist(user, playListId).build();
 
         try{
             recievedPlaylist = reqPlaylist.get();
+            /*
             System.out.println("Recieved playlist: " + recievedPlaylist.getName());
             System.out.println(recievedPlaylist.getDescription());
             System.out.println("Contains: " + recievedPlaylist.getTracks().getTotal());
-
+            */
 
         } catch (WebApiException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if(recievedPlaylist!=null) {
+            return recievedPlaylist;
+        } else{
+            return new Playlist();
+        }
+
 
     }
 
