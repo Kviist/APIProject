@@ -12,12 +12,15 @@ function getAPlaylist(user, playListId){
         for(var i = 0; i < tracks.length; i++){
            list.append('<li>' + tracks[i]['track']['name'] + '</li>');
         }
+        
+        
     });
     
     };
 
 $(document).ready(function(){
-    $('.list-of-songs').fadeIn(1000).removeClass('hidden'); 
+    $('.list-of-songs').fadeIn(1000).removeClass('hidden');
+    $('.player-div').fadeIn(1000).removeClass('hidden'); 
     getAPlaylist("spotify","37i9dQZF1DWVYZVgDjIR7c");
     
 });

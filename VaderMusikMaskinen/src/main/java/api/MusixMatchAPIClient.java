@@ -97,9 +97,8 @@ public class MusixMatchAPIClient {
 			
     	    return temp; 
 		} catch (MusixMatchException e) {
-			e.printStackTrace();
+			return "";
 		}
-    	return null;
     }
     
     public static void main(String[] args) {

@@ -226,10 +226,10 @@ p{
 .scroll-list{
     position: absolute;
     left: 10%;
-    top: 30%;
+    top: 35%;
     font-size: 70%;
     font-weight: 100;
-    max-height: 400px;
+    max-height: 300px;
     width: 500px;
     overflow: auto;
 }
@@ -244,8 +244,8 @@ p{
 
 .player{
     position: absolute;
-    left: 40%;
-    top: 22%;
+    left: 3%;
+    top: 75%;
 }
 .lyrics{
     position: absolute;
