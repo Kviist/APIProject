@@ -32,7 +32,6 @@ public class ServerController {
 
 	//Private method for translating weather symbol to a string
 	private String weatherTranslate(String weatherSymbol, Boolean drizzle) {
-		System.out.println(weatherSymbol);
 		int i = Integer.parseInt(weatherSymbol);
 
 		String translatedWeather = "";
@@ -60,13 +59,11 @@ public class ServerController {
 			if (Double.parseDouble(coordinates.getLat()) > 53 && Double.parseDouble(coordinates.getLat()) < 70) ;
 			{
 				smhi = new SmhiAPIClient((coordinates.getLon()), coordinates.getLat());
-				System.out.println(smhi.getSmhidata().toString());
 				res = weatherTranslate(smhi.getSmhidata().getWsymb(), smhi.getSmhidata().getDrizzle()) ;
 
 			}
 		}else{
 			smhi = new SmhiAPIClient("13.027149", "55.588239"); //Error handeling incase unallowed location is entered. Default location Bagdad Falafel Malmö Sweden
-			System.out.println(smhi.getSmhidata().toString());
 			res = weatherTranslate(smhi.getSmhidata().getWsymb(), smhi.getSmhidata().getDrizzle()) ;
 
 		}
@@ -94,6 +91,7 @@ public class ServerController {
 
 	public void fetchPlaylistByWeather(String weather){
 		spotifyData = new SpotifyData(spotifyClient.getPlaylist("spotify", pid.getId(weather)));
+		System.out.println("Spellista hämtad");
 	}
 
 	public List<Track> getTracks(String weather){

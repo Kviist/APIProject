@@ -79,8 +79,8 @@ public class SpotifyApiClient{
         Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
             @Override
             public void onSuccess(ClientCredentials clientCredentials) {
-                System.out.println("Accestoken recieved: " + clientCredentials.getAccessToken());
-                System.out.println("Expires in: " + clientCredentials.getExpiresIn() + "s");
+//                System.out.println("Accestoken recieved: " + clientCredentials.getAccessToken());
+//                System.out.println("Expires in: " + clientCredentials.getExpiresIn() + "s");
 
                 api.setAccessToken(clientCredentials.getAccessToken());
                 SpotifyApiClient.this.acessToken = clientCredentials.getAccessToken();

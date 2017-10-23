@@ -28,6 +28,7 @@ public class ServerMain {
 	private Gson gson;
 
 	public ServerMain(){
+		ipAddress("192.168.0.45");
 		port(7313);
 		controller =  new ServerController();
 		gson = new Gson();
@@ -40,6 +41,7 @@ public class ServerMain {
 		get(weatherData, (request, response) -> {
 			String location = request.params(":location");
 			String res = controller.getWeatherTranslation(location);
+			response.status(200);
 			return res;
 		});
 
@@ -50,6 +52,7 @@ public class ServerMain {
 			Type type = new TypeToken<Playlist>() {}.getType();
 			String json = gson.toJson(res, type);
 			System.out.println(json);
+			response.status(200);
 			return json;
 
 		});
@@ -61,6 +64,7 @@ public class ServerMain {
 			Type type = new TypeToken<LinkedList<Track>>() {}.getType();
 			String json = gson.toJson(res, type);
 			System.out.println(json);
+			response.status(200);
 			return json;
 		});
 		
@@ -72,6 +76,7 @@ public class ServerMain {
 			String artistName = splited[1];
 			String temp = (controller.getLyricsWithSongNameAndAristName(songName, artistName));
 			System.out.println(temp);
+			response.status(200);
 			return temp;
 		});
 	}
