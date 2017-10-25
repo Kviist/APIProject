@@ -52,8 +52,7 @@ public class ServerController {
 	public String getWeatherTranslation(String city){
 		SmhiAPIClient smhi;
 		String res ="";
-		Coordinates coordinates = GoogleMapsAPIClient.requestCoordinates(city);
-	try {
+		Coordinates coordinates = GoogleMapsAPIClient.requestCoordinates(city); 
 
 		if (Double.parseDouble(coordinates.getLon()) > 2.25 && Double.parseDouble(coordinates.getLon()) < 25) {
 			if (Double.parseDouble(coordinates.getLat()) > 53 && Double.parseDouble(coordinates.getLat()) < 70) ;
@@ -63,14 +62,9 @@ public class ServerController {
 
 			}
 		}else{
-			smhi = new SmhiAPIClient("13.027149", "55.588239"); //Error handeling incase unallowed location is entered. Default location Bagdad Falafel Malmö Sweden
-			res = weatherTranslate(smhi.getSmhidata().getWsymb(), smhi.getSmhidata().getDrizzle()) ;
-
+			return "ERROR PARSING CHOSEN LOCATION";
 		}
-	}catch(Exception e){
-		e.printStackTrace();
-		return "ERROR PARSING CHOSEN LOCATION";
-	}
+
 		return res;
 	}
 

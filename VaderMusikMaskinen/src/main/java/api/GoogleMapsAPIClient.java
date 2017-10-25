@@ -35,11 +35,7 @@ public class GoogleMapsAPIClient {
         
         JsonParser parser = new JsonParser();
         JsonObject jsonObj = parser.parse(jsonString).getAsJsonObject();
-        
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        String prettyJson = gson.toJson(jsonObj);
-//        System.out.println(prettyJson + "\n");
-        
+
         //Kod för att leta sig ner till JSON-objekten lat och lng.
         JsonArray jsonArray = jsonObj.getAsJsonArray("results");
         jsonObj = jsonArray.get(0).getAsJsonObject(); 
@@ -51,7 +47,7 @@ public class GoogleMapsAPIClient {
         return new Coordinates(lat, lon);
 		} catch (Exception e) {
 			System.out.println("Invalid input to GoogleMaps: returned Malmö coordinates");
-			return new Coordinates("55", "13");
+			return new Coordinates("13.027149", "55.588239"); //Error handeling incase unallowed location is entered. Default location Bagdad Falafel Malmö Sweden
 		}
 	}
 	

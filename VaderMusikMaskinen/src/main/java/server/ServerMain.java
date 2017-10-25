@@ -1,17 +1,12 @@
 package server;
 
-import api.MusixMatchAPIClient;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+
 import com.google.gson.reflect.TypeToken;
 import com.wrapper.spotify.models.Playlist;
 import dataclasses.Track;
-import spark.Response;
-import spark.Spark.*;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,7 +36,10 @@ public class ServerMain {
 		get(weatherData, (request, response) -> {
 			String location = request.params(":location");
 			String res = controller.getWeatherTranslation(location);
+			if(res.equals("ERROR PARSING CHOSEN LOCATION"))
+				response.status(400);
 			response.status(200);
+			System.out.println(res);
 			return res;
 		});
 
