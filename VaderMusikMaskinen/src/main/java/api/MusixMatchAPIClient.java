@@ -27,9 +27,16 @@ public class MusixMatchAPIClient {
 			
 			return data.getTrackId();
 		} catch (MusixMatchException e) {
-			e.printStackTrace();
+			try {
+				Track track = musixMatch.getMatchingTrack("Never gonna give you", "Rick Astly");
+				TrackData data = track.getTrack();
+
+				return data.getTrackId();
+			} catch(MusixMatchException e2){
+				return 0;
+			}
 		}
-        return 0;
+
     }
     
     public String getSongWithTrackID(int trackID) {
@@ -97,7 +104,21 @@ public class MusixMatchAPIClient {
 			
     	    return temp; 
 		} catch (MusixMatchException e) {
-			return "";
+			try {
+				Track track = musixMatch.getMatchingTrack("Never gonna give you", "Rick Astly");
+				TrackData data = track.getTrack();
+				Lyrics lyrics = musixMatch.getLyrics(trackID);
+				String temp = (data.getTrackName());
+				temp += ("<br>" + data.getArtistName());
+				temp += ("<br>" + data.getAlbumName() + "<p>");
+				String[] split = lyrics.getLyricsBody().split("\n");
+				for(int i=0; i<split.length; i++) {
+					temp += (split[i] + "<br>");
+				}
+				return temp;
+			} catch(MusixMatchException e2){
+				return "";
+			}
 		}
     }
     
@@ -108,9 +129,12 @@ public class MusixMatchAPIClient {
     	trackName = JOptionPane.showInputDialog("Skriv in låtnamn: ");
     	artistName = JOptionPane.showInputDialog("Skriv in artistnamn: ");
     	trackID = api.searchForSongReturnTrackID(trackName, artistName);
-    	System.out.println(api.getSongWithTrackID(trackID));
+    	/* System.out.println(api.getSongWithTrackID(trackID));
     	System.out.println(api.getArtistWithTrackID(trackID));
     	System.out.println(api.getAlbumWithTrackID(trackID));
     	System.out.println(api.getLyricsWithTrackID(trackID));
+    	*/
+
+    	System.out.print(api.toString(trackID));
     }
 }
