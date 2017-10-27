@@ -17,7 +17,7 @@ function getAPlaylist(user, playListId){
 function getAWeather(location){
      $.ajax({
         method: "GET",
-        url: "http://127.0.0.1:7313/v1/weatherdatasets/" + location,
+        url: "http://www.vädermusikmaskinen.party:7313/v1/weatherdatasets/" + location,
     }).done(function(response){
          $('.current-weather').text(response + '<br>');
      });
