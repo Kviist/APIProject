@@ -1,3 +1,4 @@
+//Fades in the components that are displayed in the page that describes how the site works
 $(document).ready(function(){
     
       setTimeout(function(){

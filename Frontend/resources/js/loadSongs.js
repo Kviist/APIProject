@@ -1,3 +1,4 @@
+//Method that fetched a playlist from a specific user and with a specific playlist id. Displays the result in the list of songs
 function getAPlaylist(user, playListId){
     $.ajax({
 
@@ -14,6 +15,7 @@ function getAPlaylist(user, playListId){
 
     };
 
+//Fetches the weather on a specific location from the API provided by VäderMusiMaskinen and displays it in the current-weather field
 function getAWeather(location){
      $.ajax({
         method: "GET",
@@ -24,6 +26,7 @@ function getAWeather(location){
 
 }
 
+// Fades in the componens that displays the songs
 $(document).ready(function(){
     $('.list-of-songs').fadeIn(1000).removeClass('hidden');
 

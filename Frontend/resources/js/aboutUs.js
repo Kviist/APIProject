@@ -1,3 +1,4 @@
+//Fades in the components in the page that describs our group
 $(document).ready(function(){
     
       setTimeout(function(){

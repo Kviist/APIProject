@@ -2,6 +2,7 @@ var tracks;
 var APIurl = "http://www.vädermusikmaskinen.party:7313/"
 var searchAccepted = false;
 
+//Send the location entered in the input field on the start page to the API provided by VäderMusikMaskinen. If the input was not a //accepted location a error message is displayed, otherwise the listPage loads
 function sendALocation(location){
     searchAccepted = false;
      $.ajax({
@@ -25,6 +26,7 @@ function sendALocation(location){
 
 }
 
+//Method for fetching a playlist based on a weather from the VäderMusikMaskinen API. Displays the playlistname in a field and updates //the music player to the fetched playlist
 function getPlaylistName(weather){
      $.ajax({
         method: "GET",
@@ -37,6 +39,8 @@ function getPlaylistName(weather){
      });
 
 }
+
+//Fetches the tracks from a playlst specified by the current weather. Displays the tracks in the trackslist and adds a clickfunction //that fetches the lyrics to the song that was clicked
 function getTracks(weather){
      $.ajax({
         method: "GET",
@@ -83,6 +87,8 @@ function getTracks(weather){
      });
 
 }
+
+//Method for fetching the lyrics for a song specified by the artists and the songname and displays the lyrics in the lyrics section
 function getLyrics(artist, songName){
 
    $.ajax({
@@ -99,7 +105,7 @@ function getLyrics(artist, songName){
     });
 }
 
-
+// Fades in the components
 $(document).ready(function(){
 
     setTimeout(function(){
