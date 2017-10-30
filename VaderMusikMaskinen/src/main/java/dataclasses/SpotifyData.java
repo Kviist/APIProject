@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by kviist on 2017-10-16.
+ * Class for representing the data in a spotify-playlist
  */
 public class SpotifyData {
     private Playlist playlist;
@@ -19,10 +19,18 @@ public class SpotifyData {
         this.playlist = playlist;
     }
 
-    public Playlist getPlaylistName(){
+    /**
+     * Fetches the playlist
+     * @return - the playlist name
+     */
+    public Playlist getPlaylist(){
         return playlist;
     }
 
+    /**
+     * Fetches the tracks in a playlist
+     * @return - list of the tracks in the playlist
+     */
     public List<Track> getTracks(){
         List<Track> trackList = new LinkedList<>();
         List<PlaylistTrack> tracks = playlist.getTracks().getItems();

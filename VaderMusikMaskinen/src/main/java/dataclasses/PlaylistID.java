@@ -3,7 +3,7 @@ package dataclasses;
 import java.util.HashMap;
 
 /**
- * Created by kviist on 2017-10-16.
+ * Class for mapping weathers with a specific spotify playlist. The id identifies the playlist
  */
 public class PlaylistID {
     private   HashMap<String, String> playlistIds;
@@ -26,6 +26,11 @@ public class PlaylistID {
 
     }
 
+    /**
+     * returns a playlist id based on the weather beeing entered
+     * @param weather - the weather
+     * @return - a playlist id
+     */
     public  String getId(String weather){
         return playlistIds.get(weather);
     }

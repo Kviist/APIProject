@@ -3,10 +3,7 @@ package server;
 import api.*;
 import com.wrapper.spotify.models.Playlist;
 import dataclasses.*;
-import org.jmusixmatch.MusixMatchException;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -68,6 +65,7 @@ public class ServerController {
 		return res;
 	}
 
+
 	public String getLyricsWithSongNameAndAristName(String songName, String artistName){
 		String[] liveSessions;
 		String song = songName.toLowerCase();
@@ -84,16 +82,29 @@ public class ServerController {
 
 	}
 
-	public Playlist getPlaylistName(String playListId){
-
-		return spotifyData.getPlaylistName();
+	/**
+	 * Method for fetching a playlist
+	 * @param playListId - id of the playlist from which the name should be fetched
+	 * @return - returns the playlist
+	 */
+	public Playlist getPlaylist(String playListId){
+		return spotifyData.getPlaylist();
 	}
 
+	/**
+	 * Fetched a playlist based on a weather
+	 * @param weather - the weather from which the playlist should be chosen
+	 */
 	public void fetchPlaylistByWeather(String weather){
 		spotifyData = new SpotifyData(spotifyClient.getPlaylist("spotify", pid.getId(weather)));
 		System.out.println("Spellista hämtad");
 	}
 
+	/**
+	 * Fetches the tracks from a playlist, chosen by a specified weather
+	 * @param weather - the weather which decides the playlist
+	 * @return - List of tracks in the playlist
+	 */
 	public List<Track> getTracks(String weather){
 		spotifyData = new SpotifyData(spotifyClient.getPlaylist("spotify", pid.getId(weather)));
 		return spotifyData.getTracks();

@@ -29,6 +29,7 @@ public class ServerMain {
 		
 		System.out.println("Server Started: Listening on port 7313");
 
+
 		before((request, response) ->
 				response.header("Access-Control-Allow-Origin", "*"));
 
@@ -41,16 +42,22 @@ public class ServerMain {
 			return res;
 		});
 
+		/**
+		 * Endpoint for fetching a playlist bases on a weather, as specified by the parameter weather
+		 */
 		get(playlists, (request, response) -> {
 			String weather = request.params(":weather");
 			controller.fetchPlaylistByWeather(weather);
-			Playlist res = controller.getPlaylistName(weather);
+			Playlist res = controller.getPlaylist(weather);
 			Type type = new TypeToken<Playlist>() {}.getType();
 			String json = gson.toJson(res, type);
 			response.status(200);
 			return json;
 		});
 
+		/**
+		 * Endpoint for fetching the tracks of a playlist based on a weather, as specified by the parameter weather
+		 */
 		get(tracks, (request, response) -> {
 			String weather = request.params(":weather");
 			controller.fetchPlaylistByWeather(weather);

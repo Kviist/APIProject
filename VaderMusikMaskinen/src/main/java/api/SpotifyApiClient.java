@@ -28,7 +28,7 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * Created by kviist on 2017-10-08.
+ * Class that coomunicates with the spotify API and fetched data from it
  */
 public class SpotifyApiClient{
     private String URL = "https://api.spotify.com/";
@@ -40,10 +40,19 @@ public class SpotifyApiClient{
     private Api api;
     private Playlist recievedPlaylist;
 
+    /**
+     * Sets up communication with the API
+     */
     public SpotifyApiClient(){
         api = Api.builder().clientId(clientID).clientSecret(clientSecret).build();
     }
 
+    /**
+     * Fetched and returns a playlist from a user
+     * @param user - the user who owns the playlist
+     * @param playListId - the id of the playlist
+     * @return - the playlist
+     */
     public Playlist getPlaylist(String user, String playListId){
 
         getAuth();
@@ -51,11 +60,7 @@ public class SpotifyApiClient{
 
         try{
             recievedPlaylist = reqPlaylist.get();
-            /*
-            System.out.println("Recieved playlist: " + recievedPlaylist.getName());
-            System.out.println(recievedPlaylist.getDescription());
-            System.out.println("Contains: " + recievedPlaylist.getTracks().getTotal());
-            */
+
 
         } catch (WebApiException e) {
             e.printStackTrace();
@@ -72,21 +77,19 @@ public class SpotifyApiClient{
     }
 
 
-
+    /**
+     * Method for verifing authorization to the Spotify API in order to be allow to fetch data
+     */
     public void getAuth(){
         ClientCredentialsGrantRequest request = api.clientCredentialsGrant().build();
         SettableFuture<ClientCredentials> responseFuture = request.getAsync();
         Futures.addCallback(responseFuture, new FutureCallback<ClientCredentials>() {
-            @Override
-            public void onSuccess(ClientCredentials clientCredentials) {
-//                System.out.println("Accestoken recieved: " + clientCredentials.getAccessToken());
-//                System.out.println("Expires in: " + clientCredentials.getExpiresIn() + "s");
 
+            public void onSuccess(ClientCredentials clientCredentials) {
                 api.setAccessToken(clientCredentials.getAccessToken());
                 SpotifyApiClient.this.acessToken = clientCredentials.getAccessToken();
             }
-
-            @Override
+            
             public void onFailure(Throwable throwable) {
                 System.out.println("Check invalid id or secret");
             }
