@@ -5,28 +5,24 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wrapper.spotify.models.Playlist;
 import dataclasses.Track;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONString;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import static spark.Spark.*;
-
 
 public class ServerMain {
 
 	final String weatherData = "/v1/weatherdatasets/:location";
-	final String playlistName ="/v1/musiclibrary/playlistName/:weather";
+	final String playlists ="/v1/musiclibrary/playlists/:weather";
 	final String tracks ="/v1/musiclibrary/tracks/:weather";
 	final String lyrics ="/v1/musiclibrary/lyrics/song/*/artist/*";
 	private ServerController controller;
 	private Gson gson;
 
 	public ServerMain(){
-	//	ipAddress("192.168.0.45");
+		ipAddress("192.168.0.45");
 		port(7313);
 		controller =  new ServerController();
 		gson = new Gson();
@@ -45,7 +41,7 @@ public class ServerMain {
 			return res;
 		});
 
-		get(playlistName, (request, response) -> {
+		get(playlists, (request, response) -> {
 			String weather = request.params(":weather");
 			controller.fetchPlaylistByWeather(weather);
 			Playlist res = controller.getPlaylistName(weather);
@@ -53,7 +49,6 @@ public class ServerMain {
 			String json = gson.toJson(res, type);
 			response.status(200);
 			return json;
-
 		});
 
 		get(tracks, (request, response) -> {
@@ -79,7 +74,5 @@ public class ServerMain {
 
 	public static void main(String[] args) {
 		new ServerMain();
-
-
 	}
 }
