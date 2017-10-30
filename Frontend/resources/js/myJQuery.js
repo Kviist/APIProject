@@ -28,7 +28,7 @@ function sendALocation(location){
 function getPlaylistName(weather){
      $.ajax({
         method: "GET",
-        url: APIurl+"v1/musiclibrary/playlistName/" + weather,
+        url: APIurl+"v1/musiclibrary/playlists/" + weather,
     }).done(function(response){
          var playlist = JSON.parse(response);
          $('.current-playlist').text(playlist['name']);
