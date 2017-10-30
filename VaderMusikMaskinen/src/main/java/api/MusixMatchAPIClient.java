@@ -9,6 +9,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Class that comunicates with the MusixMatch API and fetches data from it such as lyrics and trackID
+ */
 public class MusixMatchAPIClient {
 
    
@@ -17,6 +20,12 @@ public class MusixMatchAPIClient {
 	private String apiKey = "83510f47786b9682ce316929191a00ff";
 	private MusixMatch musixMatch = new MusixMatch(apiKey);
 	
+	/**
+	 * Method used to translate a song name and a artist name to a MusixMatch trackID and automatically sets song to Never gonna give you up by Rick Astley
+	 * @param song - name of the song
+	 * @param artist - name of the artist
+	 * @return - MusixMatch ID
+	 */
 	public int searchForSongReturnTrackID(String song, String artist) {
 		String trackName = song;
         String artistName = artist;
@@ -39,6 +48,11 @@ public class MusixMatchAPIClient {
 
     }
     
+	/**
+	 * Method used to get song name with MusixMatch ID
+	 * @param trackID - MusixMatch ID
+	 * @return - Name of the song
+	 */
     public String getSongWithTrackID(int trackID) {
     	try {
 			Track track = musixMatch.getTrack(trackID);
@@ -51,6 +65,11 @@ public class MusixMatchAPIClient {
     	return null;
     }
     
+    /**
+	 * Method used to get artist name with MusixMatch ID
+	 * @param trackID - MusixMatch ID
+	 * @return - Name of the artist
+	 */
     public String getArtistWithTrackID(int trackID) {
     	try {
 			Track track = musixMatch.getTrack(trackID);
@@ -63,6 +82,11 @@ public class MusixMatchAPIClient {
     	return null;
     }
     
+    /**
+	 * Method used to get album name with MusixMatch ID
+	 * @param trackID - MusixMatch ID
+	 * @return - Name of the album
+	 */
     public String getAlbumWithTrackID(int trackID) {
     	try {
 			Track track = musixMatch.getTrack(trackID);
@@ -75,6 +99,11 @@ public class MusixMatchAPIClient {
     	return null;
     }
     
+    /**
+	 * Method used to get lyrics with MusixMatch ID
+	 * @param trackID - MusixMatch ID
+	 * @return - lyrics of the song
+	 */
     public String getLyricsWithTrackID(int trackID) {
     	try {
     		Lyrics lyrics = musixMatch.getLyrics(trackID);
@@ -87,9 +116,12 @@ public class MusixMatchAPIClient {
     	return null;
     }
     
+    /**
+	 * Method used to print out Lyrics, track name, artist name for a specfic song formated for HTML page with br tags
+	 * @param trackID - MusixMatch ID
+	 * @return - String formatted with br tags with artist name, song name and lyrics
+	 */
     public String toString(int trackID) { 	
-    	 
-    	
     	try {
 			Track track = musixMatch.getTrack(trackID);
 			TrackData data = track.getTrack();
