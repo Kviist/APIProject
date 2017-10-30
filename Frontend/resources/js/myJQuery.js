@@ -87,11 +87,11 @@ function getLyrics(artist, songName){
 
    $.ajax({
     method: "GET",
-<<<<<<< HEAD
+
     url: "http://127.0.0.1:7313/v1/musiclibrary/lyrics/song/"+songName+"/artist"+"/" + artist,
-=======
+
     url: APIurl+"v1/musiclibrary/lyrics/" + songArtistName,
->>>>>>> origin/master
+
     }).done(function(response){
         $('.lyrics').text("");
         $('.lyrics').append(response);
