@@ -12,7 +12,8 @@ public class PlaylistID {
         playlistIds = new HashMap<>();
 
         playlistIds.put("KLART","37i9dQZF1DXdPec7aLTmlC");
-        playlistIds.put("HALVMULET","37i9dQZF1DWTkxQvqMy4WW");
+        //playlistIds.put("HALVMULET","37i9dQZF1DWTkxQvqMy4WW");
+        playlistIds.put("HALVMULET","37i9dQZF1DWZCYmSEd1QSS");
         playlistIds.put("MOLNIGT","37i9dQZF1DWUNIrSzKgQbP");
         playlistIds.put("DIMMA","37i9dQZF1DWWuOw4E4LGde");
         playlistIds.put("ÅSKA","37i9dQZF1DWWJOmJ7nRx0C");

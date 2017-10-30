@@ -5,10 +5,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.wrapper.spotify.models.Playlist;
 import dataclasses.Track;
+import net.sf.json.JSONObject;
+import net.sf.json.JSONString;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.*;
 
@@ -18,12 +21,12 @@ public class ServerMain {
 	final String weatherData = "/v1/weatherdatasets/:location";
 	final String playlistName ="/v1/musiclibrary/playlistName/:weather";
 	final String tracks ="/v1/musiclibrary/tracks/:weather";
-	final String lyrics ="/v1/musiclibrary/lyrics/:songArtistName";
+	final String lyrics ="/v1/musiclibrary/lyrics/song/*/artist/*";
 	private ServerController controller;
 	private Gson gson;
 
 	public ServerMain(){
-		ipAddress("192.168.0.45");
+	//	ipAddress("192.168.0.45");
 		port(7313);
 		controller =  new ServerController();
 		gson = new Gson();
@@ -67,13 +70,11 @@ public class ServerMain {
 		});
 		
 		get(lyrics, (request, response) -> {
-			String songArtistName = request.params(":songArtistName");
-			songArtistName = songArtistName.trim();
-			String[] splited = songArtistName.split("--");
-			String songName = splited[0];
-			String artistName = splited[1];
-			String temp = (controller.getLyricsWithSongNameAndAristName(songName, artistName));
-			System.out.println(temp);
+			String song = request.splat()[0];
+			String artist = request.splat()[1];
+
+			String temp = (controller.getLyricsWithSongNameAndAristName(song, artist));
+
 			response.status(200);
 			return temp;
 		});

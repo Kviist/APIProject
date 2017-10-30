@@ -40,7 +40,6 @@ function getTracks(weather){
          $('.songs li').click(function(e){
              var currentSong = $(this).text();
              console.log(currentSong);
-             getLyrics(currentSong);
 
              var splittedArray = currentSong.split('--');
              var songName = splittedArray[0];
@@ -50,12 +49,15 @@ function getTracks(weather){
 
              for(var k = 0; k < tracks.length; k++){
                  var res = tracks[k]['name'].trim().valueOf().localeCompare(songName.trim().valueOf());
+                 
 
                  if(res == 0){
                      console.log("IM IN")
                      songId = tracks[k]['id'];
+                     getLyrics(tracks[k]['artists'], tracks[k]['name'])
                  }
              }
+            
 
              console.log("SONGID: " + songId);
 
@@ -67,11 +69,11 @@ function getTracks(weather){
      });
 
 }
-function getLyrics(songArtistName){
-    console.log(songArtistName);
+function getLyrics(artist, songName){
+
    $.ajax({
     method: "GET",
-    url: "http://127.0.0.1:7313/v1/musiclibrary/lyrics/" + songArtistName,
+    url: "http://127.0.0.1:7313/v1/musiclibrary/lyrics/song/"+songName+"/artist"+"/" + artist,
     }).done(function(response){
         $('.lyrics').text("");
         $('.lyrics').append(response);

@@ -69,6 +69,12 @@ public class ServerController {
 	}
 
 	public String getLyricsWithSongNameAndAristName(String songName, String artistName){
+		String[] liveSessions;
+		String song = songName.toLowerCase();
+		if(song.contains("live")|| song.contains("spotify") || song.contains("recorded")) {
+			liveSessions = songName.split("-");
+			songName = liveSessions[0];
+		}
 		try {
 			int trackID = musixClient.searchForSongReturnTrackID(songName, artistName);
 			return musixClient.toString(trackID);
