@@ -91,6 +91,7 @@ public class ServerController {
 
 	public void fetchPlaylistByWeather(String weather){
 		spotifyData = new SpotifyData(spotifyClient.getPlaylist("spotify", pid.getId(weather)));
+		System.out.println("Spellista hämtad");
 	}
 
 	public List<Track> getTracks(String weather){

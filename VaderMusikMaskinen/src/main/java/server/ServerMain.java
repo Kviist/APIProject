@@ -42,6 +42,7 @@ public class ServerMain {
 			if(res.equals("ERROR PARSING CHOSEN LOCATION"))
 				response.status(400);
 			response.status(200);
+			System.out.println(res);
 			return res;
 		});
 
@@ -51,6 +52,7 @@ public class ServerMain {
 			Playlist res = controller.getPlaylistName(weather);
 			Type type = new TypeToken<Playlist>() {}.getType();
 			String json = gson.toJson(res, type);
+			System.out.println(json);
 			response.status(200);
 			return json;
 
@@ -62,6 +64,7 @@ public class ServerMain {
 			List<Track> res = controller.getTracks(weather);
 			Type type = new TypeToken<LinkedList<Track>>() {}.getType();
 			String json = gson.toJson(res, type);
+			System.out.println(json);
 			response.status(200);
 			return json;
 		});
