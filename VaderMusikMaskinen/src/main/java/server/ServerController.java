@@ -65,7 +65,12 @@ public class ServerController {
 		return res;
 	}
 
-
+	/**
+	 * Method for fetching lyrics entering a song name and a artist name
+	 * @param - songName: name of the song
+	 * @param - artistName: name of the artist
+	 * @return - String: MusixMatch trackID
+	 */
 	public String getLyricsWithSongNameAndAristName(String songName, String artistName){
 		String[] liveSessions;
 		String song = songName.toLowerCase();

@@ -29,7 +29,6 @@ public class ServerMain {
 		
 		System.out.println("Server Started: Listening on port 7313");
 
-
 		before((request, response) ->
 				response.header("Access-Control-Allow-Origin", "*"));
 
@@ -68,6 +67,9 @@ public class ServerMain {
 			return json;
 		});
 		
+		/**
+		 * Endpoint for fetching lyrics for a specific trackname and artistname
+		 */
 		get(lyrics, (request, response) -> {
 			String song = request.splat()[0];
 			String artist = request.splat()[1];
