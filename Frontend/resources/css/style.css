@@ -6,7 +6,7 @@
 /*----------------------*/
 .row{
     max-width: 1140px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 /*----------------------*/
@@ -45,7 +45,7 @@ html{
     right: 20px;
     float: right;
     list-style: none;
-    margin-top: 55px; 
+    margin-top: 55px;
 
 }
 
@@ -112,7 +112,7 @@ h1,h2,p{
 
 h1{
     font-size: 300%;
-    
+
 }
 h2{
     font-size: 200%;
@@ -154,6 +154,13 @@ p{
 .about-us-des i{
     color: #e67e22;
 }
+
+.works-headline{
+    position: absolute;
+    left: 10%;
+    top: 7%;
+
+}
 /*----------------------*/
 /* IMAGES*/
 /*----------------------*/
@@ -166,7 +173,7 @@ p{
 
 .images-of-us img{
     width: 15%;
-   
+
 }
 
 /*----------------------*/
@@ -179,11 +186,7 @@ p{
     width: 30%;
     height: 40%;
 }
-.works-headline{
-    position: absolute;
-    left: 10%;
 
-}
 
 .weather-description{
     position: absolute;
@@ -193,11 +196,13 @@ p{
     font-size: 70%;
     width: 50%;
     display: inline-block;
-    
+
 }
 
 .current-weather{
    display: inline-block;
+   top: 55%;
+   left: 10%;
 }
 
 .playlist-descriptiion{
@@ -208,7 +213,7 @@ p{
     font-size: 70%;
     width: 70%;
     display: inline-block;
-    
+
 }
 
 .current-playlist{
@@ -263,13 +268,3 @@ p{
 .lyrics i{
     color: #e67e22;
 }
-
-
-
-
-
-
-
-
-
-

@@ -29,6 +29,4 @@ function getAWeather(location){
 // Fades in the componens that displays the songs
 $(document).ready(function(){
     $('.list-of-songs').fadeIn(1000).removeClass('hidden');
-
-
 });

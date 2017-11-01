@@ -1,10 +1,9 @@
 var tracks;
 var APIurl = "http://www.vädermusikmaskinen.party:7313/"
-var searchAccepted = false;
+
 
 //Send the location entered in the input field on the start page to the API provided by VäderMusikMaskinen. If the input was not a //accepted location a error message is displayed, otherwise the listPage loads
 function sendALocation(location){
-    searchAccepted = false;
      $.ajax({
         method: "GET",
         url: APIurl+"v1/weatherdatasets/" + location,
@@ -12,29 +11,23 @@ function sendALocation(location){
       console.log(response);
        if(response == "ERROR PARSING CHOSEN LOCATION"){
        $('#search').val("Ange en plats inom Sverige");
-      }else{
-        $('.current-weather').text(response),
-        getPlaylistName(response),
-        getTracks(response);
-        $(document).ready(function(){
-           $('header').load('ListPage.html');
-        });
+     }else{
+       $('header').load('ListPage.html');
+       getPlaylistName(response),
+       getTracks(response);
      }
      });
-
-
-
 }
 
 //Method for fetching a playlist based on a weather from the VäderMusikMaskinen API. Displays the playlistname in a field and updates //the music player to the fetched playlist
 function getPlaylistName(weather){
      $.ajax({
         method: "GET",
-        url: APIurl+"v1/musiclibrary/playlists/" + weather,
+        url: APIurl+"v1/musiclibraries/playlists/" + weather,
     }).done(function(response){
          var playlist = JSON.parse(response);
          $('.current-playlist').text(playlist['name']);
-         console.log('https://open.spotify.com/embed?uri=' + playlist['uri']);
+         $('.current-weather').text(weather);
          $('.player').attr('src','https://open.spotify.com/embed?uri=' + playlist['uri']);
      });
 
@@ -44,7 +37,7 @@ function getPlaylistName(weather){
 function getTracks(weather){
      $.ajax({
         method: "GET",
-        url: APIurl+"v1/musiclibrary/tracks/" + weather,
+        url: APIurl+"v1/musiclibraries/tracks/" + weather,
     }).done(function(data){
          var list = JSON.parse(data);
          tracks = list;
@@ -67,7 +60,7 @@ function getTracks(weather){
 
              for(var k = 0; k < tracks.length; k++){
                  var res = tracks[k]['name'].trim().valueOf().localeCompare(songName.trim().valueOf());
-                 
+
 
                  if(res == 0){
                      console.log("IM IN")
@@ -75,7 +68,7 @@ function getTracks(weather){
                      getLyrics(tracks[k]['artists'], tracks[k]['name'])
                  }
              }
-            
+
 
              console.log("SONGID: " + songId);
 
@@ -94,9 +87,7 @@ function getLyrics(artist, songName){
    $.ajax({
     method: "GET",
 
-    url: "http://127.0.0.1:7313/v1/musiclibrary/lyrics/song/"+songName+"/artist"+"/" + artist,
-
-    url: APIurl+"v1/musiclibrary/lyrics/" + songArtistName,
+    url: APIurl+"v1/musiclibraries/lyrics/song/" +songName+ "/artist/" + artist,
 
     }).done(function(response){
         $('.lyrics').text("");
@@ -123,10 +114,6 @@ $(document).ready(function(){
     $('.inputfield').keyup(function(event){
     if(event.keyCode == 13){
         sendALocation($('#search').val());
-
-
-
-
     }
     });
 });
