@@ -15,9 +15,9 @@ import static spark.Spark.*;
 public class ServerMain {
 
 	final String weatherData = "/v1/weatherdatasets/:location";
-	final String playlists ="/v1/musiclibrary/playlists/:weather";
-	final String tracks ="/v1/musiclibrary/tracks/:weather";
-	final String lyrics ="/v1/musiclibrary/lyrics/song/*/artist/*";
+	final String playlists ="/v1/musiclibraries/playlists/:weather";
+	final String tracks ="/v1/musiclibraries/tracks/:weather";
+	final String lyrics ="/v1/musiclibraries/lyrics/song/*/artist/*";
 	private ServerController controller;
 	private Gson gson;
 
