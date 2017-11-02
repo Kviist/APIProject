@@ -4,6 +4,7 @@ var APIurl = "http://www.vädermusikmaskinen.party:7313/"
 
 //Send the location entered in the input field on the start page to the API provided by VäderMusikMaskinen. If the input was not a //accepted location a error message is displayed, otherwise the listPage loads
 function sendALocation(location){
+  location = location.replace(/\s+/g, '');
      $.ajax({
         method: "GET",
         url: APIurl+"v1/weatherdatasets/" + location,
